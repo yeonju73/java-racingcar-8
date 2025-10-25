@@ -1,0 +1,28 @@
+package racingcar.domain;
+
+public class CarName {
+    private static final int MAX_NAME_LENGTH = 5;
+    private final String name;
+
+    private CarName(String name) {
+        this.name = name;
+    }
+
+    public static CarName of(String name) {
+        validateName(name);
+        return new CarName(name);
+    }
+
+    private static void validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+        }
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+}
