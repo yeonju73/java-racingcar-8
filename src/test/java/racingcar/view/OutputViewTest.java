@@ -14,6 +14,7 @@ import racingcar.domain.Cars;
 class OutputViewTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    private static final int MOVING_FORWARD = 4;
 
     @BeforeEach
     void setUp() {
@@ -32,9 +33,9 @@ class OutputViewTest {
     void printRoundResult_shouldPrintAllCarPositions() {
         // given: pobi는 2칸, woni는 1칸 전진한 상태를 만듭니다.
         Cars cars = Cars.of("pobi,woni");
-        cars.getCars().get(0).move(4);
-        cars.getCars().get(0).move(4);
-        cars.getCars().get(1).move(4);
+        cars.getCars().get(0).move(MOVING_FORWARD);
+        cars.getCars().get(0).move(MOVING_FORWARD);
+        cars.getCars().get(1).move(MOVING_FORWARD);
 
         // when: printRoundResult를 호출합니다.
         OutputView.printRoundResult(cars);

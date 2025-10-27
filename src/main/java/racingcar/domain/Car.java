@@ -26,4 +26,8 @@ public class Car {
             this.position++;
         }
     }
+
+    public boolean isAt(int maxPosition) {
+        return this.position == maxPosition;
+    }
 }

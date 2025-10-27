@@ -14,7 +14,11 @@ public class CarController {
         AttemptCount attemptCount = AttemptCount.of(attemptInput);
 
         OutputView.printResultMessage();
+        moveCarsWithPrintWhileAttemptCount(attemptCount, cars);
+        OutputView.printWinner(cars.findWinners());
+    }
 
+    private static void moveCarsWithPrintWhileAttemptCount(AttemptCount attemptCount, Cars cars) {
         for (int i = 0; i < attemptCount.getValue(); i++) {
             cars.moveAll();
             OutputView.printRoundResult(cars);

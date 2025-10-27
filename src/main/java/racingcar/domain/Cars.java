@@ -8,7 +8,7 @@ import racingcar.exception.ErrorMessage;
 public class Cars {
     private static final int RANDOM_MIN = 0;
     private static final int RANDOM_MAX = 9;
-    private List<Car> cars;
+    private final List<Car> cars;
 
     private Cars(List<Car> cars) {
         this.cars = cars;
@@ -21,14 +21,15 @@ public class Cars {
     }
 
     private static String[] getSplit(String carNames) {
-        if (carNames.endsWith(",")) {
-            throw new IllegalArgumentException(ErrorMessage.INPUT_ENDS_WITH_COMMA.getMessage());
-        }
-        String[] names = carNames.split(",");
+        String[] names = carNames.split(",", -1);
+        validationCarNamesNotEmpty(names);
+        return names;
+    }
+
+    private static void validationCarNamesNotEmpty(String[] names) {
         if (names.length == 0) {
             throw new IllegalArgumentException(ErrorMessage.AT_LEAST_ONE_CAR.getMessage());
         }
-        return names;
     }
 
     public void moveAll() {
@@ -41,4 +42,20 @@ public class Cars {
     public List<Car> getCars() {
         return cars;
     }
+
+    public List<String> findWinners() {
+        int maxPosition = findMaxPosition();
+        return cars.stream()
+                .filter(car -> car.isAt(maxPosition))
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int findMaxPosition() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
 }
