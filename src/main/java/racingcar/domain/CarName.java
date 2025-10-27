@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.ErrorMessage;
+
 public class CarName {
     private static final int MAX_NAME_LENGTH = 5;
     private final String name;
@@ -15,10 +17,10 @@ public class CarName {
 
     private static void validateName(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_IS_BLANK.getMessage());
         }
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름은 5자 이하여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.CAR_NAME_TOO_LONG.getMessage());
         }
     }
 

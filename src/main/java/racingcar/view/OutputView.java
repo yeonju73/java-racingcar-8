@@ -9,8 +9,7 @@ public class OutputView {
         System.out.println(OUTPUT_RESULT_PROMPT_MESSAGE);
     }
 
-    public static void printResultProgress(Cars cars) {
-        System.out.println();
+    public static void printRoundResult(Cars cars) {
     }
 
     public static void printWinner(Cars winners) {

@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public class Car {
+    private static final int MOVE_THRESHOLD = 4;
     private final CarName name;
     private int position = 0;
 
@@ -13,6 +14,13 @@ public class Car {
     }
 
     public String getCarInfo() {
-        return this.name.getName() + " : " + this.position;
+        String positionMarket = "_".repeat(this.position);
+        return this.name.getName() + " : " + positionMarket;
+    }
+
+    public void move(int randomNumber) {
+        if (randomNumber >= MOVE_THRESHOLD) {
+            this.position++;
+        }
     }
 }
