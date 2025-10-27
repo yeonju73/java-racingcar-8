@@ -13,9 +13,12 @@ public class Car {
         return new Car(CarName.of(carName));
     }
 
-    public String getCarInfo() {
-        String positionMarket = "_".repeat(this.position);
-        return this.name.getName() + " : " + positionMarket;
+    public String getName() {
+        return name.getName();
+    }
+
+    public int getPosition() {
+        return position;
     }
 
     public void move(int randomNumber) {

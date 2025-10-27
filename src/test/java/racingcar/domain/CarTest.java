@@ -24,7 +24,7 @@ class CarTest {
         car.move(input);
 
         // then
-        assertThat(car.getCarInfo()).isEqualTo("pobi : _");
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @DisplayName("자동차는 3이하일 경우 멈춘다")
@@ -36,6 +36,6 @@ class CarTest {
         car.move(input);
 
         // then
-        assertThat(car.getCarInfo()).isEqualTo("pobi : ");
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 }
